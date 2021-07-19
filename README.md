@@ -240,6 +240,8 @@ Then, make the script executable
 sudo chmod +x migrate_influxdb.sh
 ```
 
+For details, please see <https://docs.influxdata.com/influxdb/v2.0/reference/cli/influx/write/#write-line-protocol-from-multiple-files>
+
 #### Writing Data: Full Example
 
 ```shell
