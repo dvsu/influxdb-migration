@@ -166,6 +166,22 @@ Second export (13 May 2021)
 sudo influx_inspect export -database "officeserver" -datadir "/var/lib/influxdb/data" -waldir "/var/lib/influxdb/wal" -out "/home/ubuntu/migrate/backup_data_20210513" -start "2021-05-13T00:00:00Z" -end "2021-05-14T00:00:00Z"
 ```
 
+Alternatively, `db_export.sh` may also be used to perform the automatic export.  
+Replace the following variables with the right values.
+
+- `start_date`
+- `total_days`
+- `database_name`
+- `data_dir`
+- `wal_dir`
+
+Next, make the file executable and run it. Output files will be stored in `$HOME/db_export` by default.
+
+```none
+sudo chmod +x db_export.sh
+./db_export.sh
+```
+
 ### Step 2: Transfer Data
 
 If the new InfluxDB is located in different machine, data should be transferred prior to writing. Otherwise, skip this step.
@@ -310,3 +326,7 @@ Confirm the header has been successfully removed
 ```none
 head -n 10 ~/import/backup_data
 ```
+
+**_Note_**
+
+If database export is performed using `db_export.sh`, the issue is very unlikely to occur because the header cleanup is performed immediately after export.
